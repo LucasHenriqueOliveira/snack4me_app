@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+node_modules/
+bower_components/
+plugins
+platforms
+*.swp
+*.swo
+*.log
+*.DS_Store
+.tmp
