@@ -1,0 +1,46 @@
+
+<ion-header-bar class="bar-subheader item-input-inset" ng-if="(searchType === SEARCH_TYPE_KEYBOARD) && (state === STATE_SEARCH_USER)">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios7-search placeholder-icon"></i>
+    <input id="cityExpr" type="search" placeholder="{{ 'CITY' | translate }}" ng-change="searchCity()" ng-model="cityExpr">
+  </label>
+  <button ng-click="clearSearchBox()" class="button button-clear">
+      {{ 'CANCEL' | translate }}
+  </button>      
+</ion-header-bar>
+
+<ion-view title="{{ 'EVENTS' | translate }}">
+
+  <ion-content>
+
+      <ion-refresher pulling-text="{{ 'REFRESH' | translate }}" refreshing-icon="false" on-refresh="getEvents()">
+      </ion-refresher>
+
+      <div ng-hide="state !== STATE_SEARCHING" style="margin: auto; padding: 20px 0 0 0; text-align: center; width: 200px; height: 170px; display: block;">
+        <div class="snack-loading">
+          <img src="img/ui/icon.jpg" style="border-radius: 100%; width: 80px;">
+        </div> 
+        <div class="element-animation"></div>
+        <p style="top: -100px; position: relative; color: #aaaaaa;">{{ 'MESSAGE_EVENTS' | translate }}</p>
+      </div>
+
+      <div class="list list-cities" ng-cloak ng-show="(searchType === SEARCH_TYPE_KEYBOARD) && (state === STATE_SEARCH_USER)">
+        <a ng-click="getEventsByCity(city)" class="item item-icon-right" ng-repeat="city in cities">{{city.name_city}}</a>
+      </div>
+
+      <a nav-direction="swap" nav-transition="none" ng-repeat="event in events" class="item " ng-href="#/app/events/{{event.id}}/seats" ng-click="selectEvent(event)">
+        <img ng-src="{{ baseUrlImage }}{{ event.image }}" class="event-icon">
+        <h2>{{ event.name }}</h2>
+        <p class="more-info moment">
+          {{ event.city }}
+        </p>
+      </a>
+
+      <div ng-show="state !== STATE_SEARCHING  && events.length === 0" style="text-align: center; margin: 20px 0; padding: 20px;">
+        <h3 style="color: #aaaaaa; font-weight: 300;">{{ 'EVENTS_SCHEDULE' | translate }}</h3>
+      </div>
+
+      <a ng-click="changeCity()" class="hidden margin-10 button button-block button-outline button-positive" ng-class="{'force-visible': (searchType === SEARCH_TYPE_KEYBOARD) && (state === STATE_SEARCH_DONE)}">{{ 'CHANGE_CITY' | translate }}</a>
+
+  </ion-content>
+</ion-view>

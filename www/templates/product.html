@@ -1,0 +1,73 @@
+<ion-view title="{{ 'DETAILS' | translate }}">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-text-wrap">
+        <h2>{{ currentProduct.name[lang] }}</h2>
+        <p class="positive">
+          {{ currentProduct.price | currency }}
+        </p>
+        <p class="message_available">{{ 'PRODUCT_UNAVAILABLE' | translate }}{{ currentProduct.hour_initial }}{{ 'TO' | translate }}{{ currentProduct.hour_final }}.</p>
+      </div>
+      <div class="item item-body">
+        <img ng-show="currentProduct.image" ng-src="{{ baseUrlProd }}/{{ selectedEvent.id }}/products/thumb/{{ currentProduct.image }}" class="product-image-detail" />
+        <p>{{ currentProduct.desc[lang] }}</p>
+      </div>
+      <div class="item tabs tab-secondary">
+        <div class="row">
+          <div class='col' style="text-align: center;">
+            <a ng-click="removeFromCart(currentProduct)" class="product-remove" style="margin-right: 20px;" href=""></a>
+          </div>
+          <div class='col' style="padding: 0 0 5px 0; text-align: center;">
+            <span class="badge badge-calm  product-quantity-badge">{{ productQuantity(currentProduct) }}</span>
+          </div>
+          <div class='col' style='text-align: center'>
+            <a ng-class="{'disabled' : (!showAddButton(currentProduct) || checkProductUnavailable(currentProduct.hour_initial, currentProduct.hour_final)) }" ng-click="addToCart(currentProduct)" class="product-add" href=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer bar-assertive">
+    <button ng-click="backToProducts()" class="button button-icon icon ion-reply button-clear button-cream">{{ 'BACK' | translate }}</button>
+    <div class="title">{{ 'SUBTOTAL' | translate }}: <span id="subtotal" class="cream">{{subtotal() | currency}}</span></div>
+    <button ng-show="hasProductOnCart()"  ng-click="checkout()" class="button button-clear button-cream">{{ 'CHECKOUT' | translate }}</button>
+  </div>
+
+  <script id="templates/type-product.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-header-bar class="bar bar-header bar-light">
+        <h1 class="title">{{ 'PRODUCT' | translate }}</h1>
+        <button class="button button-clear button-primary" ng-click="cancelProductCurrent(form)">{{ 'CANCEL' | translate }}</button>
+      </ion-header-bar>
+      <ion-content delegate-handle="main" style="background-color: #EFECEC;">
+        <div style="margin-top: 10px" ng-show="type_products.length && currentProduct.complement == 0">
+          <span style="color: #aaaaaa; padding-left: 10px">{{ 'CHOOSE_TYPE' | translate }}:</span>
+          <ul class="list">
+            <li class="item item-text-wrap" ng-repeat="type in type_products">
+              <input id="{{type.id}}" name="type_products" type="radio" ng-model="form.currentTypeProduct" ng-value="$index">
+              <label for="{{type.id}}">{{type.name[lang]}}</label>
+            </li>
+          </ul>
+        </div>
+        <div style="margin-top: 10px" ng-show="type_products.length && currentProduct.complement == 1">
+          <span style="color: #aaaaaa; padding-left: 10px">{{ 'CHOOSE_COMPLEMENT' | translate }}:</span>
+          <ul class="list">
+            <li class="item item-text-wrap" ng-repeat="type in type_products">
+              <input id="complement_{{type.id}}" name="complement_product" type="checkbox" ng-model="form.currentTypeProduct[type.id]"
+                     ng-change="checkedComplement()">
+              <label for="complement_{{type.id}}">{{type.name[lang]}}</label>
+            </li>
+          </ul>
+        </div>
+        <div style="margin-top: 10px" class="padding">
+          <span style="color: #aaaaaa;">{{ 'ANY_COMMENTS' | translate }}?</span>
+          <textarea name="comment" id="comment" ng-model="form.comment">
+	      </textarea>
+        </div>
+        <div class="padding">
+          <button type="submit" class="button button-full button-assertive" ng-click="addToCartSubmit()"><i class="icon ion-plus-circled"></i> {{ 'ADD' | translate }}</button>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+</ion-view>

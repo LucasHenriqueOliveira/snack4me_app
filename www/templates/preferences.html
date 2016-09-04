@@ -1,0 +1,16 @@
+<ion-view title="{{ 'PREFERENCES' | translate }}">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    {{ 'LANGUAGE' | translate }}
+                </div>
+                <select ng-model="language" ng-change="ChangeLanguage(language)">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="pt">Português</option>
+                </select>
+            </label>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,49 @@
+<ion-view title="{{ 'ORDER' | translate }}">
+  <ion-content class="padding" style="padding-top: 0px;">
+    <div class="list card">
+      <div class="item balanced">
+        {{ 'SUCESS_ORDER' | translate }}
+      </div>
+      <div class="item item-body">
+        <img ng-src="{{ qrCodeBaseUrl }}{{ orderConfirm.ve }}" class="product-image-detail" />
+        <p>{{ 'MESSAGE_CONFIRM_ORDER' | translate }}</p>
+      </div>
+    </div>
+
+    <a class="button button-block button-positive snack4me" ng-click="openRating()">
+      {{ 'RATE_US' | translate }}
+    </a>
+
+    <a class="button button-block button-positive snack4me" href="#/app/orders">
+      {{ 'ORDERS' | translate }}
+    </a>
+
+    <a class="button button-block button-positive button-outline" ng-click="continueOrdering()">
+      {{ 'CONTINUE_ORDERING' | translate }}
+    </a>
+
+    <script id="rate-us.html" type="text/ng-template">
+      <div class="modal">
+        <header class="bar bar-header">
+          <h1 class="title">{{ 'MESSAGE_RATE_US' | translate }}</h1>
+          <div class="button button-clear" ng-click="closeRating()"><span class="icon ion-close"></span></div>
+        </header>
+        <content has-header="true" padding="true">
+          <div class="list list-inset modal-top">
+            <span ng-repeat="rating in ratings">
+                {{rating.text}}
+                <div star-rating rating-value="rating.current" on-rating-selected="getSelectedRating(rating, $index)" max="rating.max"></div>
+                <br />
+            </span>
+            {{ 'COMMENTS_RATE_US' | translate }}
+            <textarea name="comment" id="comment-textarea" ng-model="form.comment">
+	        </textarea>
+            <div>
+              <button class="button button-block button-positive snack4me" ng-click="saveRating()">{{ 'SAVE' | translate }}</button>
+            </div>
+          </div>
+        </content>
+      </div>
+    </script>
+  </ion-content>
+</ion-view>

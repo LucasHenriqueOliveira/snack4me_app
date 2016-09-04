@@ -1,0 +1,30 @@
+<ion-view title="{{ 'ACCOUNT' | translate }}">
+  <ion-content>
+    <div class="list">
+      <div class="item">
+          <h2 class="title">{{ 'NAME' | translate }}</h2>
+          <h3 class="product-list-price calm">
+            {{ userInfo.userName }}
+          </h3>
+      </div>
+      <div class="item">
+          <h2 class="title">E-mail</h2>
+          <h3 class="product-list-price calm">
+            {{ userInfo.email }}
+          </h3>
+      </div>
+      <div class="item">
+          <h2 class="title">UUID</h2>
+          <h3 class="product-list-price calm">
+            {{ userInfo.uuid }}
+          </h3>
+      </div>
+      <div class="item">
+          <h2 class="title">Access Token</h2>
+          <h3 class="product-list-price calm">
+            {{ userInfo.token }}
+          </h3>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

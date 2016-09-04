@@ -1,0 +1,18 @@
+<ion-view view-title="{{ 'LOCAL' | translate }}" ng-cloack>
+  <ion-content>
+    <div class="detail-banner" style="background: url(http://www.snack4me.com/hotel/events/{{selectedEvent.id}}/fundo.jpg);">
+      <div class="detail-text">
+        <h1 class="text-shadow light banner-event">{{ selectedEvent.name }}</h1>
+        <h3 class="text-shadow light schedule"> {{ selectedEvent.city }} </h3>
+      </div>
+    </div>
+    <div ng-repeat="zone in arenaConfig.map" class="seat-zone">
+      <h6 class="zone-label">{{ arenaConfig.legend[lang][$index] }}</h6>
+      <ion-scroll direction="x" scrollbar-x="false" has-bouncing="true" class="wide-as-needed">
+        <div class="scroll-wrapper" ng-repeat="level in getZoneItens(zone)" >
+          <a href="" ng-class="{ 'seat-link-marked' : isSelected(zone, level.id) }" class="seat-link" ng-click="markSeat(zone, {'id': level.id, 'label': level.label}, $index)">{{ level.label }}</a>
+        </div>
+      </ion-scroll>
+    </div>
+  </ion-content>
+</ion-view>

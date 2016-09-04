@@ -1,26 +1,35 @@
 Ionic App Base
 =====================
 
-A starting project for Ionic that optionally supports using custom SCSS.
-
-## Using this project
-
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
-
 For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
 
-```bash
-$ npm install -g ionic
+```
+npm install -g ionic
 ```
 
-Then run:
-
-```bash
-$ ionic start myProject tabs
+```
+npm install
 ```
 
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
+Se não instalar os plugins, tente instalar um de cada vez com o comando:
 
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
-# snack4me_app
+```
+npm install <nome_plugin>
+```
+
+## Lista de plugins instalados
+* cordova-plugin-compat 1.0.0 "Compat"
+* cordova-plugin-datepicker 0.9.2 "DatePicker"
+* cordova-plugin-device 1.1.2 "Device"
+* cordova-plugin-geolocation 2.2.0 "Geolocation"
+* cordova-plugin-globalization 1.0.2 "Globalization"
+* cordova-plugin-google-analytics 0.8.1 "Google Universal Analytics Plugin"
+* cordova-plugin-inappbrowser 1.4.0 "InAppBrowser"
+* cordova-plugin-network-information 1.2.1 "Network Information"
+* cordova-plugin-splashscreen 3.2.2 "Splashscreen"
+* cordova-plugin-statusbar 2.1.3 "StatusBar"
+* cordova-plugin-whitelist 1.2.2 "Whitelist"
+* cordova-plugin-x-toast 2.5.1 "Toast"
+* ionic-plugin-keyboard 2.2.0 "Keyboard"
+
+

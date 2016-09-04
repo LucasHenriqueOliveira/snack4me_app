@@ -1,0 +1,44 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar>
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-content style="background: #807D7D;">
+      <div class="snack4me-signup-logo">
+        <img src="img/ui/logo.svg" style="width: 50%;" />
+      </div>
+      <ion-list class="dark">
+        <ion-item nav-clear menu-close href="#/app/events" class="menu-list-item">
+          <i class="icon ion-calendar"></i> {{ 'EVENTS' | translate }}
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/orders" class="menu-list-item">
+          <i class="icon ion-bag"></i> {{ 'ORDERS' | translate }}
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/account" class="menu-list-item">
+          <i class="icon ion-person"></i> {{ 'ACCOUNT' | translate }}
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/preferences" class="menu-list-item">
+          <i class="icon ion-gear-a"></i> {{ 'PREFERENCES' | translate }}
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/use" class="menu-list-item">
+          <i class="icon ion-ios-photos-outline"></i> {{ 'USE' | translate }}
+        </ion-item>
+      </ion-list>
+
+      <div class="padding">
+        <button class="button button-block button-outline button-stable" ng-click="logout()">
+          {{ 'LOGOUT' | translate }}
+        </button>
+      </div>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

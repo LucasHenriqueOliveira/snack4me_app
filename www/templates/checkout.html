@@ -1,0 +1,66 @@
+<ion-view title="{{ 'CHECKOUT' | translate }}">
+  <ion-content class="padding" has-bouncing="true">
+    <ng-form name="frmCheckout">
+
+      <div class="checkout-seatinfo" ng-show="!locals.length">
+        <i class="icon ion-paper-airplane"></i> {{ 'LOCAL' | translate }}: <b>{{ getSeatDescription() }}</b>
+      </div>
+
+      <div class="checkout-seatinfo" ng-show="locals.length">
+        <i class="icon ion-paper-airplane"></i> {{ 'LOCAL' | translate }}: <b>{{ getSeatDescription() }}</b><br/>
+        {{ 'MESSAGE_LOCAL_CHECKOUT' | translate }}
+        <label>
+          <select class="select_local" name="local" ng-model="formData.local">
+            <option ng-repeat="local in locals" value="{{local.id}}">{{local.name[lang]}}</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="checkout-scheduleinfo">
+        <i class="icon ion-clock"></i> {{ 'MESSAGE_SCHEDULE_CHECKOUT' | translate }}
+        <label>
+          <input type="time" ng-model="formData.schedule" step="00:05" placeholder="00:00" style="background: rgb(238, 238, 238); width: 100%; border: none;">
+        </label>
+      </div>
+
+      <div class="list">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <i ng-class="{'balanced' : couponApplied}" class="icon ion-pricetag placeholder-icon"></i>
+            <input type="text" ng-model="formData.coupon" name="coupon" id="coupon" placeholder="{{ 'COUPON_CODE' | translate }}">
+          </label>
+          <button class="button button-small button-positive snack4me" ng-click="applyCoupon(formData.coupon)">
+            Ok
+          </button>
+        </div>
+
+        <div ng-show="couponText" class="coupon-text">
+          {{ couponText }}
+        </div>
+
+        <div class="item item-input-inset">
+          <div class="col col-left">{{ 'SUBTOTAL' | translate }}</div>
+          <div class="col col-right">{{subtotal() | currency}}</div>
+        </div>
+        <div class="item item-input-inset">
+          <div class="col col-left">{{ 'TAX_SERVICE' | translate }}</div>
+          <div class="col col-right">{{getServiceTaxesInValue() | currency}}</div>
+        </div>
+        <div class="item item-input-inset">
+          <div class="col col-left">{{ 'DISCOUNT' | translate }}</div>
+          <div class="col col-right assertive">{{discountReadable() | currency}}</div>
+        </div>
+        <div class="item item-input-inset">
+          <div class="col col-left">{{ 'TOTAL' | translate }}</div>
+          <div class="col col-right positive">{{totalOrder() | currency}}</div>
+        </div>
+
+        <button class="button button-block button-assertive" ng-click="submitOrder()" ng-disabled="formHasErrors()">
+          {{ 'SUBMIT_ORDER' | translate }}
+        </button>
+
+      </div>
+
+    </ng-form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,57 @@
+<ion-view title="{{ 'ORDER' | translate }}">
+  <ion-content>
+    <div class="list card">
+      <div class="item">
+        <h2>#{{ order.num_order }}</h2>
+        <p class="more-info">
+          {{ order.status_order[lang] }}
+        </p>
+      </div>
+      <div class="item item-body">
+        <img ng-src="{{ qrCodeBaseUrl }}{{ order.ve }}" class="product-image-detail" />
+        <p>{{ 'MESSAGE_ORDER' | translate }}</p>
+      </div>
+      <div class="item body">
+        <h2>{{ order.event_name }}</h2>
+        <p>{{ 'FLOOR' | translate }}: {{ order.floor }}</p>
+        <p>{{ 'ROOM' | translate }}: {{ order.seat }}</p>
+        <p ng-show="order.local[lang]">{{ 'PLACE_DELIVERY' | translate }}: {{ order.local[lang] }}</p>
+      </div>
+      <div class="item item-divider">
+        {{ 'PRODUCTS' | translate }}
+      </div>
+      <div class="item item-text-wrap" ng-repeat="product in order.products">
+        <h2>{{ product.name[lang] }}</h2>
+        <ul style="font-size: 12px;">
+          <li ng-repeat="type in product.type">
+            <span ng-show="type.name[lang]">- {{type.name[lang]}}<br /></span>
+            <span ng-show="type.comment">p.s.: {{type.comment}}</span>
+          </li>
+        </ul>
+        <br />
+        <p>{{ product.price_unit | currency}} x {{ product.quantity }} <span style="float: right;">{{ product.price_total | currency}}</span></p>
+      </div>
+      <div class="item item-divider">
+        {{ 'BILL' | translate }}
+      </div>
+      <div class="item item-body">
+        <p>{{ 'SUBTOTAL' | translate }} <span style="float: right;">{{ order.price | currency }}</span></p>
+      </div>
+      <div class="item item-body">
+        <p>{{ 'TAX_SERVICE' | translate }} <span style="float: right;">{{ order.tax_service | currency }}</span></p>
+      </div>
+      <div class="item item-body">
+        <p>{{ 'DISCOUNT' | translate }} <span style="float: right;">{{ order.discount | currency }}</span></p>
+      </div>
+      <div class="item item-body">
+        <p>{{ 'TOTAL' | translate }} <span style="float: right;">{{ order.price_total | currency }}</span></p>
+      </div>
+
+    </div>
+    <div class="padding">
+      <a class="button button-block button-positive snack4me" href="#/app/orders">
+        {{ 'ORDERS' | translate }}
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

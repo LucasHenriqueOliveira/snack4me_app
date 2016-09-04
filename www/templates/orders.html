@@ -1,0 +1,15 @@
+<ion-view title="{{ 'ORDERS' | translate }}">
+  <ion-content>
+    <ion-refresher pulling-text="{{ 'REFRESH' | translate }}" refreshing-icon="false" on-refresh="getOrders()">
+    </ion-refresher>
+    <a nav-direction="swap" nav-transition="none" ng-repeat="order in orders" class="item" ng-href="#/app/order/{{order.id}}">
+      <h2>{{ order.event_name }} <span style="float: right; calm">{{ order.date.toMonth() }}</span></h2>
+      <p class="more-info moment">
+        #{{ order.num_order }} <span style="float: right">{{ order.status[lang] }}</span>
+      </p>
+    </a>  
+    <div ng-show="state === STATE_SEARCH_DONE && orders.length === 0" style="text-align: center; padding: 20px;">
+      <h3 style="color: #aaaaaa; font-weight: 300;">{{ 'MESSAGE_ORDERS' | translate }}</h3>
+    </div>  
+  </ion-content>
+</ion-view>

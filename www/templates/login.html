@@ -1,0 +1,54 @@
+<ion-view>
+  <ion-content class="has-footer main">
+    <div class="snack4me-login-logo">
+      <img src="img/ui/logo.svg" style="width: 60%;" />
+    </div>
+
+    <form>
+      <div class="list list-inset" style="margin-top: 0 !important; background: none !important;">
+        <button class="button button-block icon-left ion-social-facebook button-positive" ng-click="loginFacebook()">{{ 'BUTTON_FACEBOOK' | translate }}</button>
+        <button class="button button-block icon-left ion-social-googleplus button-assertive" ng-click="loginGoogle()">{{ 'BUTTON_GOOLE' | translate }}</button>
+        <button class="button button-block icon-left ion-email button-assertive snack4me" ng-click="loginWithSnack4me()">{{ 'BUTTON_SNACK4ME' | translate }}</button>
+
+{{ facebook }}
+
+{{ errorfb }}
+
+      </div>
+
+    </form>
+
+    <p style="margin: 10px; text-align: center;color: white; font-size: 15px;">{{ 'QUESTION_ACCOUNT' | translate }} <a href="" ng-click="signUp()" class="form-links register">{{ 'SIGUP_ACCOUNT' | translate }}</a></p>
+
+  </ion-content>
+    <ion-footer-bar class="bar-light" style="text-align: center; color: white; font-size: 12px;">
+        <span style="text-align: center; width: 100%; padding-top: 10px;">
+            Snack4me® &nbsp;<a href ng-click="termsUse()" class="form-links register" style="font-size: 12px;">{{ 'USE' | translate }}</a>
+        </span>
+    </ion-footer-bar>
+
+<script id="templates/login-snack4me.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive snack4me">
+            <h1 class="title">{{ 'TITLE_SIGNIN' | translate }}</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">{{ 'CANCEL' | translate }}</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+            <div class="list">
+                <label class="item item-input">
+                    <i class="icon ion-email placeholder-icon"></i>
+                    <input type="email" placeholder="E-mail" ng-model="user.email">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-locked placeholder-icon"></i>
+                    <input type="password" placeholder="{{ 'PASSWORD' | translate }}" ng-model="user.password">
+                </label>
+                <button class="button button-full button-positive snack4me" ng-click="loginSnack4me()">{{ 'BUTTON_SIGNIN' | translate }}</button>
+                <div ng-show="hasError" class="error-banner">
+                    {{ errorMsg }}
+                </div>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
+</ion-view>
