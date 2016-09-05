@@ -1,20 +1,22 @@
 Ionic App Base
 =====================
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
+Instale o `ionic` e o `cordova`:
 
 ```
-npm install -g ionic
+npm install -g ionic cordova
 ```
+
+Instale as dependências:
 
 ```
 npm install
 ```
 
-Se não instalar os plugins, tente instalar um de cada vez com o comando:
+Instale os plugins com o comando:
 
 ```
-npm install <nome_plugin>
+npm install <nome_plugin>@<versao>
 ```
 
 ## Lista de plugins instalados
@@ -31,5 +33,27 @@ npm install <nome_plugin>
 * cordova-plugin-whitelist 1.2.2 "Whitelist"
 * cordova-plugin-x-toast 2.5.1 "Toast"
 * ionic-plugin-keyboard 2.2.0 "Keyboard"
+
+Para rodar o ionic no browser:
+
+```
+ionic serve
+```
+
+Para rodar o ionic no app:
+
+```
+cordova platform add ios (use este comando apenas uma vez para adicionar a plataforma)
+```
+
+```
+ionic build ios
+```
+
+Depois abra o projeto no xcode e rode ele ou para rodar no simulador do mac use o comando:
+
+```
+ionic emulate ios
+```
 
 
