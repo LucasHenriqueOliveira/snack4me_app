@@ -46,7 +46,7 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
  };
  
  $scope.selectEvent = function(event) {
-   GAService.trackView('Event: ' + event.name);
+   GAService.trackView('Hotel: ' + event.name);
    DataService.selectEvent(event);
  };
  
@@ -95,7 +95,7 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
     $scope.state = $scope.STATE_SEARCHING;
     var posOptions = {enableHighAccuracy: false, timeout: 10000, maximumAge: 65000};
     $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-      GAService.trackEvent('Search', 'Events', 'Search events on device', 'By GPS');
+      GAService.trackEvent('Search', 'Hotéis', 'Search hotels on device', 'By GPS');
       var lat  = position.coords.latitude;
       var lon = position.coords.longitude;
       $scope.searchType = $scope.SEARCH_TYPE_GPS;
@@ -103,8 +103,8 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
     }, function(err) {
       $scope.GPS_ERROR = err;
       if ($scope.lastCitySearch.id_city) {
-        GAService.trackEvent('Search Error', 'Events', 'Error searching events', 'By GPS');
-        GAService.trackEvent('Search', 'Events', 'Searching events on device', 'By City');
+        GAService.trackEvent('Search Error', 'Hotéis', 'Error searching events', 'By GPS');
+        GAService.trackEvent('Search', 'Hotéis', 'Searching events on device', 'By City');
         $scope.getEventsByCity($scope.lastCitySearch);
       } else {
         $scope.prepareSearchByKeyboard();
