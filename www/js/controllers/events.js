@@ -93,18 +93,25 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
   $scope.getEvents = function() {
     $scope.events = [];
     $scope.state = $scope.STATE_SEARCHING;
+
+
     var posOptions = {enableHighAccuracy: false, timeout: 10000, maximumAge: 65000};
-    $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+
+      $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
       GAService.trackEvent('Search', 'Hotéis', 'Search hotels on device', 'By GPS');
       var lat  = position.coords.latitude;
       var lon = position.coords.longitude;
+          console.log(lat);
+          console.log(lon);
       $scope.searchType = $scope.SEARCH_TYPE_GPS;
+        console.log("vendo");
       $scope.getEventsByGeolocation(lat, lon);
     }, function(err) {
+          console.log(000);
       $scope.GPS_ERROR = err;
       if ($scope.lastCitySearch.id_city) {
-        GAService.trackEvent('Search Error', 'Hotéis', 'Error searching events', 'By GPS');
-        GAService.trackEvent('Search', 'Hotéis', 'Searching events on device', 'By City');
+        GAService.trackEvent('Search Error', 'Hotéis', 'Error searching hotels', 'By GPS');
+        GAService.trackEvent('Search', 'Hotéis', 'Searching hotels on device', 'By City');
         $scope.getEventsByCity($scope.lastCitySearch);
       } else {
         $scope.prepareSearchByKeyboard();
@@ -115,8 +122,9 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
       $scope.getEvents();
     });
   };
-  
+
   $scope.getEvents();
+
   
  });
  

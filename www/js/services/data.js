@@ -14,8 +14,10 @@ starter.factory('DataService', function($http, $timeout, $q) {
   var userInfo      = {};
   var tempCart      = {};
   var subtotals     = {};
+  var DOCTRINE = "http://snack4me.com/hotel/snack4me_webapi/public/index.php/";
 
-  return {
+
+    return {
     /*
      * Busco o historico de pedidos do usuario
     */
@@ -50,7 +52,7 @@ starter.factory('DataService', function($http, $timeout, $q) {
      * Busco eventos baseados em coordenadas geograficas
     */
     getEventsByGeolocation: function(lat, lon) {
-      return $http.get("http://www.snack4me.com/hotel/event.php?lat="+lat+"&lon="+lon+"&d=" + Date.now())
+      return $http.get(DOCTRINE + "event?lat="+lat+"&lon="+lon+"&d=" + Date.now())
        .then(function(response) {
          events = response.data.response;
          return events;

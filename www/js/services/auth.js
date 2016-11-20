@@ -1,6 +1,7 @@
 starter.factory('AuthService', function($http, $localStorage, $cordovaOauth, $cordovaDevice, $timeout, $ionicHistory, $location, $q) {
+  var DOCTRINE = "http://snack4me.com/hotel/snack4me_webapi/public/index.php/";
 
-  var mergeDeviceInfo = function(formData) {
+    var mergeDeviceInfo = function(formData) {
     if(ionic.Platform.isWebView()) {
         formData['device']   = $cordovaDevice.getDevice();
         formData['cordova']  = $cordovaDevice.getCordova();
@@ -38,7 +39,7 @@ starter.factory('AuthService', function($http, $localStorage, $cordovaOauth, $co
     
     loginSnack4me: function(user) {    
     
-      var urlPost = "http://www.snack4me.com/hotel/customer.php";
+      var urlPost = DOCTRINE + "customer";
       var formData = { email: user.email, password: user.password };
       formData = mergeDeviceInfo(formData);
       var params = snack4meLib.toQueryString(formData);
