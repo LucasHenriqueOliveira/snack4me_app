@@ -101,10 +101,9 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
       GAService.trackEvent('Search', 'Hotéis', 'Search hotels on device', 'By GPS');
       var lat  = position.coords.latitude;
       var lon = position.coords.longitude;
-          console.log(lat);
-          console.log(lon);
+
       $scope.searchType = $scope.SEARCH_TYPE_GPS;
-        console.log("vendo");
+        
       $scope.getEventsByGeolocation(lat, lon);
     }, function(err) {
           console.log(000);
