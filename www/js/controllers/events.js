@@ -106,7 +106,7 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
         
       $scope.getEventsByGeolocation(lat, lon);
     }, function(err) {
-          console.log(000);
+
       $scope.GPS_ERROR = err;
       if ($scope.lastCitySearch.id_city) {
         GAService.trackEvent('Search Error', 'Hotéis', 'Error searching hotels', 'By GPS');

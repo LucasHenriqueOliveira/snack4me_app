@@ -62,7 +62,7 @@ starter.factory('DataService', function($http, $timeout, $q) {
      * Busco eventos por cidade
     */
     getEventsByCity: function(cityId) {
-      return $http.get("http://www.snack4me.com/hotel/call_events.php?city="+cityId+"&d=" + Date.now())
+      return $http.get(DOCTRINE + "event_call?city="+cityId+"&d=" + Date.now())
        .then(function(response) {
          events = response.data.response;
          return events;
@@ -72,7 +72,7 @@ starter.factory('DataService', function($http, $timeout, $q) {
      * Busco as cidades com eventos disponiveis
     */
     getCitiesWithEvents: function() {
-      return $http.get("http://www.snack4me.com/hotel/cities.php?d=" + Date.now())
+      return $http.get(DOCTRINE + "event_city?d=" + Date.now())
        .then(function(response) {
         cities = response.data.response;
         return cities;
@@ -105,7 +105,7 @@ starter.factory('DataService', function($http, $timeout, $q) {
     /*
      * Recupero a configuracao dos assentos da arena para um dado evento
     */
-    getArenaConfig: function(eventId) {     
+    getArenaConfig: function(eventId) {
       return $http.get("http://www.snack4me.com/hotel/events/" + eventId + "/config.json?d=" + Date.now())
        .then(function(response) {
          arenaConfig = response.data;
@@ -126,7 +126,7 @@ starter.factory('DataService', function($http, $timeout, $q) {
      * Recupero a configuracao dos assentos da arena para um dado evento
      */
     getLocalsOrder: function(eventId) {
-      return $http.get("http://www.snack4me.com/hotel/local_order.php?id_event=" + eventId + "&d=" + Date.now())
+      return $http.get(DOCTRINE + "local_order?id_event=" + eventId + "&d=" + Date.now())
           .then(function(response) {
             localsOrder = response.data;
             return localsOrder;

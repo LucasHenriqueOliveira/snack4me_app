@@ -10,9 +10,18 @@
         <i class="icon ion-paper-airplane"></i> {{ 'LOCAL' | translate }}: <b>{{ getSeatDescription() }}</b><br/>
         {{ 'MESSAGE_LOCAL_CHECKOUT' | translate }}
         <label>
-          <select class="select_local" name="local" ng-model="formData.local">
+          <select
+                  class="select_local"
+                  name="local"
+                  ng-model="formData.local">
             <option ng-repeat="local in locals" value="{{local.id}}">{{local.name[lang]}}</option>
           </select>
+
+
+
+
+
+
         </label>
       </div>
 
