@@ -23,7 +23,7 @@ starter.factory('DataService', function($http, $timeout, $q) {
     */
     getOrders: function(params) {
 
-      var urlPost = "http://www.snack4me.com/hotel/page-personal.php";
+      var urlPost = DOCTRINE + "/page-personal";
       params = snack4meLib.toQueryString(params);        
 
       return $http.post(urlPost, params,
@@ -36,7 +36,7 @@ starter.factory('DataService', function($http, $timeout, $q) {
     },
 
     getOrderById: function(params) {
-      var urlPost = "http://www.snack4me.com/hotel/order.php";
+      var urlPost = DOCTRINE + "order";
       params = snack4meLib.toQueryString(params);
 
       return $http.post(urlPost, params,
@@ -106,7 +106,8 @@ starter.factory('DataService', function($http, $timeout, $q) {
      * Recupero a configuracao dos assentos da arena para um dado evento
     */
     getArenaConfig: function(eventId) {
-      return $http.get("http://www.snack4me.com/hotel/events/" + eventId + "/config.json?d=" + Date.now())
+
+     return $http.get("http://www.snack4me.com/hotel/events/" + eventId + "/config.json?d=" + Date.now())
        .then(function(response) {
          arenaConfig = response.data;
          return arenaConfig;
@@ -116,7 +117,7 @@ starter.factory('DataService', function($http, $timeout, $q) {
      * Recupero a lista de produtos para o evento
     */
     getProductList: function(eventId) {     
-      return $http.get("http://www.snack4me.com/hotel/product.php?id_event=" + eventId + "&d=" + Date.now())
+      return $http.get(DOCTRINE + "product?id_event=" + eventId + "&d=" + Date.now())
        .then(function(response) {
          productList = response.data;
          return productList;

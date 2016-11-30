@@ -23,6 +23,7 @@ starter.controller('SeatsCtrl', function($scope, $stateParams, $location, $ionic
  
  // Caso nao seja possivel obter o evento selecionado anteriormente, redireciona novamente para a Home
  if ($scope.selectedEvent.id === undefined) {
+
    $location.url('/app/events');
  };
 

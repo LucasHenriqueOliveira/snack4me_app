@@ -21,6 +21,7 @@ starter.controller('ProductsCtrl', function($scope, $stateParams, $location, $io
 
   // Caso nao seja possivel obter o evento selecionado anteriormente, redireciona novamente para a Home
   if ($scope.selectedEvent.id === undefined) {
+
     $location.url('/app/events');
   };
 

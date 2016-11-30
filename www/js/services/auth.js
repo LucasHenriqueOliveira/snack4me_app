@@ -80,7 +80,8 @@ starter.factory('AuthService', function($http, $localStorage, $cordovaOauth, $co
               /*
                * Por ultimo, faco o login no snack4me
               */
-              var urlPost = "http://www.snack4me.com/hotel/customer-social.php";
+              
+              var urlPost = DOCTRINE + "customer_social";
               $http.post(urlPost, params,
                 { headers: {'Content-Type': 'application/x-www-form-urlencoded'} }
               )
@@ -130,7 +131,8 @@ starter.factory('AuthService', function($http, $localStorage, $cordovaOauth, $co
               /*
                * Por ultimo, faco o login no snack4me
               */
-              var urlPost = "http://www.snack4me.com/hotel/customer-social.php";
+              
+              var urlPost = DOCTRINE + "customer_social";
               $http.post(urlPost, params,
                 { headers: {'Content-Type': 'application/x-www-form-urlencoded'} }
               )

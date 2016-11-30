@@ -1,4 +1,4 @@
-starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory) {
+starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location) {
 
  $scope.STATE_SEARCHING = 1;
  $scope.STATE_SEARCH_DONE = 2;
@@ -33,6 +33,19 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
      $scope.$broadcast('scroll.refreshComplete');
    });
  };
+
+ /*$scope.getIntegration = function (integration,id) {
+     //ng-href="#/app/events/{{event.id}}/seats"
+
+     if(integration = 0){
+            $scope.exibirCpf = true;
+         console.log("add acao para cpf");
+            $location.path('/app/events/'+ id +'/seats');
+     }else{
+         $location.path('/app/events/'+ id +'/seats');
+     }
+
+ }*/
 
  $scope.clearSearchBox = function() {
   document.getElementById('cityExpr').value = '';

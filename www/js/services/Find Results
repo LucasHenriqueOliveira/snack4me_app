@@ -1,0 +1,37 @@
+Searching 3048 files for "order.php"
+
+/Users/israel/Sites/lucas/app/platforms/android/assets/www/js/services/data.js:
+   36  
+   37      getOrderById: function(params) {
+   38:       var urlPost = "http://www.snack4me.com/hotel/order.php";
+   39        params = snack4meLib.toQueryString(params);
+   40  
+   ..
+  126       */
+  127      getLocalsOrder: function(eventId) {
+  128:       return $http.get("http://www.snack4me.com/hotel/local_order.php?id_event=" + eventId + "&d=" + Date.now())
+  129            .then(function(response) {
+  130              localsOrder = response.data;
+
+/Users/israel/Sites/lucas/app/platforms/ios/build/emulator/Snack4me.app/www/js/services/data.js:
+   37  
+   38      getOrderById: function(params) {
+   39:       var urlPost = "http://www.snack4me.com/hotel/order.php";
+   40        params = snack4meLib.toQueryString(params);
+   41  
+
+/Users/israel/Sites/lucas/app/platforms/ios/www/js/services/data.js:
+   37  
+   38      getOrderById: function(params) {
+   39:       var urlPost = "http://www.snack4me.com/hotel/order.php";
+   40        params = snack4meLib.toQueryString(params);
+   41  
+
+/Users/israel/Sites/lucas/app/www/js/services/data.js:
+   37  
+   38      getOrderById: function(params) {
+   39:       var urlPost = "http://www.snack4me.com/hotel/order.php";
+   40        params = snack4meLib.toQueryString(params);
+   41  
+
+5 matches across 4 files

@@ -10,12 +10,14 @@ starter.factory('CartService', function($http) {
 	var tempCommentCart = [];
 	var subtotals= {};
 	var orderConfirm = {};
+	var DOCTRINE = "http://snack4me.com/hotel/snack4me_webapi/public/index.php/";
+
 
 	return {
 		applyCoupon: function(event, couponCode) {
 
           var eventId = event.id_event;
-	      var urlPost = "http://www.snack4me.com/hotel/coupon.php";
+	      var urlPost = DOCTRINE +  "coupon";
 	      formData = {id_event: eventId, coupon: couponCode}
 	      var params = snack4meLib.toQueryString(formData);        
  
@@ -52,7 +54,7 @@ starter.factory('CartService', function($http) {
 
 		submitCheckout: function(orderData) {
 
-		  var urlPost = "http://www.snack4me.com/hotel/checkout.php";
+		  var urlPost = DOCTRINE + "checkout";
 
           var postData = {
 			id_event: orderData.eventId,
@@ -136,7 +138,7 @@ starter.factory('CartService', function($http) {
 
 		submitRateUs: function(postData) {
 
-			var urlPost = "http://www.snack4me.com/hotel/rate-us.php";
+			var urlPost = DOCTRINE + "rate-us";
 
 			var params = snack4meLib.toQueryString(postData);
 
