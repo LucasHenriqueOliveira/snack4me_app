@@ -140,7 +140,8 @@ starter.controller('CheckoutCtrl', function($scope, $location, $ionicHistory, $i
       email: AuthService.getEmail(),
       name: AuthService.getUserName(),
       token: AuthService.getToken(),
-      uuid: AuthService.getUUID()
+      uuid: AuthService.getUUID(),
+      descLocal: $scope.formData.descLocal
     };
 
     var checkSchedule = CartService.checkSchedule($scope.formData.schedule);

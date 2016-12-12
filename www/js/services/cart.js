@@ -69,7 +69,9 @@ starter.factory('CartService', function($http) {
 		  	email: orderData.email,
 		  	name: orderData.name,
 		  	token: orderData.token,
-		  	uuid: orderData.uuid
+		  	uuid: orderData.uuid,
+            descLocal: orderData.descLocal
+
           };
 
           var idx = 0;

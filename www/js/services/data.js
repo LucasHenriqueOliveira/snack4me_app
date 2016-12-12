@@ -106,9 +106,9 @@ starter.factory('DataService', function($http, $timeout, $q) {
      * Recupero a configuracao dos assentos da arena para um dado evento
     */
     getArenaConfig: function(eventId) {
+        return $http.get("http://localhost:8100/config.json?d=" + Date.now())
 
-     return $http.get("http://www.snack4me.com/hotel/events/" + eventId + "/config.json?d=" + Date.now())
-       .then(function(response) {
+         .then(function(response) {
          arenaConfig = response.data;
          return arenaConfig;
        });

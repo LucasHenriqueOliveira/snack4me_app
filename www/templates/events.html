@@ -28,7 +28,7 @@
         <a ng-click="getEventsByCity(city)" class="item item-icon-right" ng-repeat="city in cities">{{city.name_city}}</a>
       </div>
 
-      <a nav-direction="swap" nav-transition="none" ng-repeat="event in events" class="item " ng-href="#/app/events/{{event.id}}/seats" ng-click="selectEvent(event)">
+      <a nav-direction="swap" nav-transition="none" ng-repeat="event in events" class="item"  ng-click="getIntegration(id,event)">
         <img ng-src="{{ baseUrlImage }}{{ event.image }}" class="event-icon">
         <h2>{{ event.name }}</h2>
         <p class="more-info moment">
@@ -43,4 +43,24 @@
       <a ng-click="changeCity()" class="hidden margin-10 button button-block button-outline button-positive" ng-class="{'force-visible': (searchType === SEARCH_TYPE_KEYBOARD) && (state === STATE_SEARCH_DONE)}">{{ 'CHANGE_CITY' | translate }}</a>
 
   </ion-content>
+
+    <script id="templates/type-product.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar class="bar bar-header bar-light">
+                <h1 class="title">{{ 'PRODUCT' | translate }}</h1>
+                     </ion-header-bar>
+            <ion-content delegate-handle="main" style="background-color: #EFECEC;">
+
+
+                <div style="margin-top: 10px" class="padding">
+                    <span style="color: #aaaaaa;">{{ 'ANY_COMMENTS' | translate }}?</span>
+                    <textarea name="comment" id="comment" ng-model="form.comment">
+	      </textarea>
+                </div>
+                <div class="padding">
+                    <button type="submit" class="button button-full button-assertive" ng-click="addToCartSubmit()"><i class="icon ion-plus-circled"></i> {{ 'ADD' | translate }}</button>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
 </ion-view>

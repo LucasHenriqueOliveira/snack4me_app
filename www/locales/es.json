@@ -45,6 +45,11 @@
   "BACK": "Volver",
   "COUPON_CODE": "Cupón de descuento",
   "COUPON": "Cupón",
+
+  "MESSAGE_DESCLOCAL_CHECKOUT": "Puede indicar aproximadamente dónde desea recibir la orden",
+  "DESC_LOCAL": "Indicar cualquier referencia",
+  
+
   "MESSAGE_SCHEDULE_CHECKOUT": "Se puede programar el recibo o dejar en blanco para recibir inmediatamente después de la confirmación de la orden.",
   "MESSAGE_LOCAL_CHECKOUT": "Usted puede recibir su pedido en un área común o dejar en blanco para recebir en su habitación.",
   "DELIVERY_SCHEDULE": "Programar la entrega",

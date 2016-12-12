@@ -45,6 +45,10 @@
   "BACK": "Back",
   "COUPON_CODE": "Coupon code",
   "COUPON": "Coupon",
+
+  "MESSAGE_DESCLOCAL_CHECKOUT": "You can indicate approximately where you want to receive the order.",
+  "DESC_LOCAL": "Indicate some reference",
+  
   "MESSAGE_SCHEDULE_CHECKOUT": "You can schedule the receipt or leave blank to receive after order confirmation.",
   "MESSAGE_LOCAL_CHECKOUT": "You can receive your order in a common area or leave blank to receive in the room.",
   "DELIVERY_SCHEDULE": "Delivery schedule",

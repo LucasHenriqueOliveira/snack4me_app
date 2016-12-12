@@ -46,6 +46,8 @@
   "COUPON_CODE": "Cupom de desconto",
   "COUPON": "Cupom",
   "MESSAGE_SCHEDULE_CHECKOUT": "Você pode agendar o recebimento ou deixe em branco para receber logo após a confirmação do pedido.",
+  "MESSAGE_DESCLOCAL_CHECKOUT": "Você pode indicar aproximadamente onde deseja receber o pedido.",
+  "DESC_LOCAL": "Indique alguma referência",
   "MESSAGE_LOCAL_CHECKOUT": "Você pode receber o seu pedido em uma área comum ou deixe em branco para receber no apartamento.",
   "DELIVERY_SCHEDULE": "Agendar entrega",
   "SUBMIT_ORDER": "Finalizar o pedido",

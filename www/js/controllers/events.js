@@ -1,4 +1,4 @@
-starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location) {
+starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location,$ionicModal) {
 
  $scope.STATE_SEARCHING = 1;
  $scope.STATE_SEARCH_DONE = 2;
@@ -19,6 +19,7 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
 
  $scope.getEventsByGeolocation = function(lat, lon) {
   DataService.getEventsByGeolocation(lat, lon).then(function(events){
+
      $scope.events = events;
      $scope.state = $scope.STATE_SEARCH_DONE;
      $scope.$broadcast('scroll.refreshComplete');
@@ -34,18 +35,31 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
    });
  };
 
- /*$scope.getIntegration = function (integration,id) {
-     //ng-href="#/app/events/{{event.id}}/seats"
+ $scope.getIntegration = function (id,event) {
 
-     if(integration = 0){
-            $scope.exibirCpf = true;
-         console.log("add acao para cpf");
+     //ng-href="#/app/events/{{event.id}}/seats"
+     $scope.selectEvent(event);
+
+     if(event.integration == 0){
+         $scope.modal.show();
+
             $location.path('/app/events/'+ id +'/seats');
      }else{
          $location.path('/app/events/'+ id +'/seats');
      }
 
- }*/
+ }
+
+    $ionicModal.fromTemplateUrl('templates/type-product.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+
+    $scope.$on('$destroy', function() {
+        $scope.modal.remove();
+    });
 
  $scope.clearSearchBox = function() {
   document.getElementById('cityExpr').value = '';
