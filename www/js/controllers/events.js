@@ -1,4 +1,4 @@
-starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location,$ionicModal) {
+starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location) {
 
  $scope.STATE_SEARCHING = 1;
  $scope.STATE_SEARCH_DONE = 2;
@@ -35,31 +35,51 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
    });
  };
 
+    var myPopup = $ionicPopup.show({
+        template: '<input type="text" ng-model="data.cpf" autofocus>',
+        title: 'Digite o seu CPF',
+        scope: $scope,
+        cssClass: 'customPopup', //se quiser colocar um estilo para o popup
+        buttons: [
+            { text: 'Cancel' , onTap: function(e) { return false; } },
+            {
+                text: '<b>Save</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return $scope.data.cpf || false;
+                }
+            }
+        ]
+    });
+
+    myPopup.then(function(res) {
+        if(res) {
+            if(!$scope.data.cpf) {
+                $ionicPopup.alert({
+                    title: '',
+                    template: 'CPF é obrigatório!'
+                });
+                return false;
+            }
+            $location.path('/app/events/'+ id +'/seats?' + data.cpf);
+        }
+    });
+
  $scope.getIntegration = function (id,event) {
 
      //ng-href="#/app/events/{{event.id}}/seats"
      $scope.selectEvent(event);
 
      if(event.integration == 0){
-         $scope.modal.show();
+         myPopup();
 
-            $location.path('/app/events/'+ id +'/seats');
      }else{
          $location.path('/app/events/'+ id +'/seats');
      }
 
  }
 
-    $ionicModal.fromTemplateUrl('templates/type-product.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
 
-    $scope.$on('$destroy', function() {
-        $scope.modal.remove();
-    });
 
  $scope.clearSearchBox = function() {
   document.getElementById('cityExpr').value = '';
