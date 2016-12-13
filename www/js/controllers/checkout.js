@@ -144,7 +144,7 @@ starter.controller('CheckoutCtrl', function($scope, $location, $ionicHistory, $i
       descLocal: $scope.formData.descLocal,
       cpf: $localStorage.cpf
     };
-console.log(orderData);
+
     var checkSchedule = CartService.checkSchedule($scope.formData.schedule);
 
     if(checkSchedule.error){
