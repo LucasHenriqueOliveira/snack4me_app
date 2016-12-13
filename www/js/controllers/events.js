@@ -35,35 +35,7 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
    });
  };
 
-    var myPopup = $ionicPopup.show({
-        template: '<input type="text" ng-model="data.cpf" autofocus>',
-        title: 'Digite o seu CPF',
-        scope: $scope,
-        cssClass: 'customPopup', //se quiser colocar um estilo para o popup
-        buttons: [
-            { text: 'Cancel' , onTap: function(e) { return false; } },
-            {
-                text: '<b>Save</b>',
-                type: 'button-positive',
-                onTap: function(e) {
-                    return $scope.data.cpf || false;
-                }
-            }
-        ]
-    });
 
-    myPopup.then(function(res) {
-        if(res) {
-            if(!$scope.data.cpf) {
-                $ionicPopup.alert({
-                    title: '',
-                    template: 'CPF é obrigatório!'
-                });
-                return false;
-            }
-            $location.path('/app/events/'+ id +'/seats?' + data.cpf);
-        }
-    });
 
  $scope.getIntegration = function (id,event) {
 
@@ -71,7 +43,36 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
      $scope.selectEvent(event);
 
      if(event.integration == 0){
-         myPopup();
+
+         var myPopup = $ionicPopup.show({
+             template: '<input type="text" ng-model="data.cpf" autofocus>',
+             title: 'Digite o seu CPF',
+             scope: $scope,
+             cssClass: 'customPopup', //se quiser colocar um estilo para o popup
+             buttons: [
+                 { text: 'Cancel' , onTap: function(e) { return false; } },
+                 {
+                     text: '<b>Save</b>',
+                     type: 'button-positive',
+                     onTap: function(e) {
+                         return $scope.data.cpf || false;
+                     }
+                 }
+             ]
+         });
+
+         myPopup.then(function(res) {
+             if(res) {
+                 if(!$scope.data.cpf) {
+                     $ionicPopup.alert({
+                         title: '',
+                         template: 'CPF é obrigatório!'
+                     });
+                     return false;
+                 }
+                 $location.path('/app/events/'+ id +'/seats?cpf=' + $scope.data.cpf);
+             }
+         });
 
      }else{
          $location.path('/app/events/'+ id +'/seats');
