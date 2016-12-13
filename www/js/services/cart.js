@@ -70,7 +70,9 @@ starter.factory('CartService', function($http) {
 		  	name: orderData.name,
 		  	token: orderData.token,
 		  	uuid: orderData.uuid,
-            descLocal: orderData.descLocal
+            descLocal: orderData.descLocal,
+            cpf: orderData.cpf
+
 
           };
 
