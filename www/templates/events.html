@@ -28,7 +28,7 @@
         <a ng-click="getEventsByCity(city)" class="item item-icon-right" ng-repeat="city in cities">{{city.name_city}}</a>
       </div>
 
-      <a nav-direction="swap" nav-transition="none" ng-repeat="event in events" class="item"  ng-click="getIntegration(id,event)">
+      <a nav-direction="swap" nav-transition="none" ng-repeat="event in events" class="item"  ng-click="getIntegration(event)">
         <img ng-src="{{ baseUrlImage }}{{ event.image }}" class="event-icon">
         <h2>{{ event.name }}</h2>
         <p class="more-info moment">
