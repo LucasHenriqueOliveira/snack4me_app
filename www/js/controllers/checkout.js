@@ -1,4 +1,4 @@
-starter.controller('CheckoutCtrl', function($scope, $location, $ionicHistory, $ionicPlatform, AuthService, DataService, CartService, GAService, $translate, $cordovaToast) {
+starter.controller('CheckoutCtrl', function($scope, $location, $ionicHistory, $ionicPlatform, AuthService, DataService, CartService, GAService, $translate, $cordovaToast,$localStorage) {
 
   $scope.formData = {
     tip: 0.00
@@ -141,9 +141,10 @@ starter.controller('CheckoutCtrl', function($scope, $location, $ionicHistory, $i
       name: AuthService.getUserName(),
       token: AuthService.getToken(),
       uuid: AuthService.getUUID(),
-      descLocal: $scope.formData.descLocal
+      descLocal: $scope.formData.descLocal,
+      cpf: $localStorage.cpf
     };
-
+console.log(orderData);
     var checkSchedule = CartService.checkSchedule($scope.formData.schedule);
 
     if(checkSchedule.error){

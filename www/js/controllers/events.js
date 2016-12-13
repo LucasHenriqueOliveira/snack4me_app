@@ -1,4 +1,4 @@
-starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location,$ionicPopup) {
+starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location,$ionicPopup,$localStorage) {
 
  $scope.STATE_SEARCHING = 1;
  $scope.STATE_SEARCH_DONE = 2;
@@ -130,7 +130,9 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
                      return false;
                  }else{
                      if($scope.validarCPF($scope.data.cpf)){
-                         $location.path('/app/events/'+ event.id +'/seats?cpf=' + $scope.data.cpf);
+                         $localStorage.cpf = $scope.data.cpf;
+                         $location.path('/app/events/'+ event.id +'/seats');
+
                      }
                  }
 
@@ -141,7 +143,8 @@ starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, 
 
      }else{
          var c = '29659859805';//retorno da api de integracao
-         $location.path('/app/events/'+ event.id +'/seats?cpf=' + c);
+         $localStorage.cpf = c;
+         $location.path('/app/events/'+ event.id +'/seats');
      }
 
  }
