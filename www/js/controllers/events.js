@@ -1,4 +1,4 @@
-starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location) {
+starter.controller('EventsCtrl', function($scope, $stateParams, $ionicPlatform, $cordovaGeolocation, DataService, GAService, CartService, $ionicHistory,$location,$ionicPopup) {
 
  $scope.STATE_SEARCHING = 1;
  $scope.STATE_SEARCH_DONE = 2;
